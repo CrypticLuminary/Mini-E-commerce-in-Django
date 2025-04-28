@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    My Cart 
+{% endblock title %}
+
+{% block content %}
+    <p>My Cart</p>
+    {% if cart %}
+        {% if cart.items.all %}
+            <ul>
+                {% for item in cart.items.all %}
+                    <li>
+                        {{ item.product.name }} (Quantity: {{ item.quantity }})
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    {% else %}
+        <p>No cart found.</p>
+    {% endif %}
+{% endblock content %}
